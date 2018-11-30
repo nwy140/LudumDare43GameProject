@@ -7,6 +7,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 	private Rigidbody2D myBody;
 
 	public float move_Speed = 3.5f;
+	public float max_moveSpeed = 20f;
 	private bool goLeft;
 
 	private Animator anim;
@@ -16,6 +17,8 @@ public class SideScrollerCharacter : MonoBehaviour {
 	
 
 	private bool first_Jump, second_Jump = true;
+
+	
 
 	
 
@@ -45,11 +48,11 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 	void Move() {
 		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
-			myBody.velocity += new Vector2 (-move_Speed, 0f);
+			myBody.velocity +=  new Vector2 (Mathf.Clamp(-move_Speed,-max_moveSpeed,+max_moveSpeed), 0f);
 			sr.flipX = true;
 		} 
 		else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
-			myBody.velocity += new Vector2 (+move_Speed, 0f);
+			myBody.velocity +=  new Vector2 (Mathf.Clamp(+move_Speed,-max_moveSpeed,+max_moveSpeed), 0f);
 			sr.flipX = false;
 		
 		} 

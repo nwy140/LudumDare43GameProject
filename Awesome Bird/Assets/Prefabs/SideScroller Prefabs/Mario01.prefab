@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_Speed: 0.2
+  max_moveSpeed: 20
   jump_Force: 6
   second_Jump_Force: 3
 --- !u!212 &212063246530810578
