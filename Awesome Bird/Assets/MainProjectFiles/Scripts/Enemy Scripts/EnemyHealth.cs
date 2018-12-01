@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour {
 
 
 	public float health = 40f;
+	public float death_spawnChance = 30;
 
 	void Awake() {
 
@@ -17,7 +18,15 @@ public class EnemyHealth : MonoBehaviour {
 
 		print("Enemy Took Damage, health is " + health);
 		if(health<= 0 ){
-			Destroy(gameObject,3f);
+			GameplayController.instance.DisplayScore(10,0);
+			if(Random.RandomRange(1,100) > death_spawnChance){
+				// % chance coin spawn
+				//spawn coin
+			} 
+				
+
+
+			Destroy(gameObject);
 		}
 	}
 

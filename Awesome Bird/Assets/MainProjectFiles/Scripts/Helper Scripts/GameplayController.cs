@@ -23,6 +23,7 @@ public class GameplayController : MonoBehaviour {
 	public GameObject[] bird_Price_Text;
 	public GameObject[] bird_Icons;
 
+
 	void Awake() {
 		MakeInstance ();
 	}
