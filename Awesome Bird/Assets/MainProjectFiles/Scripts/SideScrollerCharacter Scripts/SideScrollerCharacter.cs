@@ -83,9 +83,10 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 	void AnimControl(){
 		//if moving, play walk anim
-		if(myBody.velocity.x < -0.1 || myBody.velocity.x > 0.1 ){
+		if(myBody.velocity.x < -0.1 || myBody.velocity.x > 0.1  ){
 			anim.SetBool (TagManager.WALK_BOOL_ANIMPARAM,true);
-		} else{
+			// not holding key then only false
+		} else if(!(   Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)  )  || !(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) ) {
 			anim.SetBool (TagManager.WALK_BOOL_ANIMPARAM,false);
 
 		}
