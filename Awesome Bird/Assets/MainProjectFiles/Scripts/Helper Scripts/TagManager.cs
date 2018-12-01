@@ -16,6 +16,7 @@ public class TagManager : MonoBehaviour {
 
 	public static string FADE_IN_ANIMATION = "FadeIn";
 	public static string STRIKE_ANIMATION = "Strike";
+	public static string SKILL_ANIMATION = "Skill";	
 	public static string Atk_ANIMATION = "Atk";
 
 

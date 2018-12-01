@@ -17,6 +17,7 @@ TagManager:
   - Dog
   - WorldBoundary
   - FinishLine
+  - Projectile
   layers:
   - Default
   - TransparentFX

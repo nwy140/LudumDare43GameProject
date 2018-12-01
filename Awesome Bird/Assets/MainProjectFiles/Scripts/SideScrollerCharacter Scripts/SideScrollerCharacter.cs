@@ -15,6 +15,10 @@ public class SideScrollerCharacter : MonoBehaviour {
 	public float max_moveSpeed = 20f;
 	public float jump_Force = 5f, second_Jump_Force = 7f;
 	private bool first_Jump, second_Jump = true;
+	private bool goLeft;
+
+	public GameObject Shuriken;
+
 
 	void Awake() {
 		myBody = GetComponent<Rigidbody2D> ();
@@ -45,12 +49,15 @@ public class SideScrollerCharacter : MonoBehaviour {
 	void Move() {
 		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
 			myBody.velocity +=  new Vector2 (Mathf.Clamp(-move_Speed,-max_moveSpeed,+max_moveSpeed), 0f);
-			sr.flipX = true;
+			goLeft = true;
+			sr.flipX = goLeft;
+			
 		} 
 		else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
-			myBody.velocity +=  new Vector2 (Mathf.Clamp(+move_Speed,-max_moveSpeed,+max_moveSpeed), 0f);
-			sr.flipX = false;
-		
+			myBody.velocity +=  new Vector2 (Mathf.Clamp(+move_Speed,-max_moveSpeed,+max_moveSpeed), 0f);			
+			goLeft = false;
+			sr.flipX = goLeft;
+			
 		} 
 
 		
@@ -84,6 +91,18 @@ public class SideScrollerCharacter : MonoBehaviour {
 	void Combat(){
 		if(Input.GetMouseButton(0)){
 			anim.Play(TagManager.Atk_ANIMATION);
+		}
+
+		if(Input.GetMouseButtonDown(1)){
+			anim.Play (TagManager.SKILL_ANIMATION);
+
+			GameObject thrown = (GameObject)Instantiate (
+			Shuriken,
+			transform.position,
+			transform.rotation);
+			
+			thrown.GetComponent<Projectile>().goLeft = goLeft;
+
 		}
 	}
 
