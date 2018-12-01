@@ -6,10 +6,13 @@ TagManager:
   tags:
   - Border
   - Ground
-  - Dog
   - Warning
   - Diamond
   - Score
+  - Wall
+  - Potion
+  - UIBUTTONS
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -53,11 +56,17 @@ TagManager:
   - name: Ground
     uniqueID: 2070507347
     locked: 0
-  - name: Dog
+  - name: Enemies
     uniqueID: 3435464781
     locked: 0
   - name: Player
     uniqueID: 4254146635
+    locked: 0
+  - name: Items
+    uniqueID: 2493293303
+    locked: 0
+  - name: Obstacles
+    uniqueID: 54410239
     locked: 0
   - name: UI
     uniqueID: 3369608933
