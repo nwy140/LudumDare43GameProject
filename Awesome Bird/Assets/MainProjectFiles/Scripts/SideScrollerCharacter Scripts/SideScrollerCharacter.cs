@@ -18,6 +18,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 	private bool goLeft;
 
 	public GameObject Shuriken;
+	public GameObject HitBox;
 
 
 	void Awake() {
@@ -91,6 +92,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 	void Combat(){
 		if(Input.GetMouseButton(0)){
 			anim.Play(TagManager.Atk_ANIMATION);
+			
 		}
 
 		if(Input.GetMouseButtonDown(1)){
@@ -119,6 +121,13 @@ public class SideScrollerCharacter : MonoBehaviour {
 		// if falling or airborne , play anim		
 		if (myBody.velocity.y < -0.1 || myBody.velocity.y > 0.1  ){ 
 			anim.SetBool (TagManager.JUMP_BOOL_ANIMPARAM,true);
+		}
+
+		//enable hitbox when attacking anim only
+		if(anim.GetCurrentAnimatorStateInfo(0).IsName(TagManager.Atk_ANIMATION) ){
+			HitBox.SetActive(true);
+		} else{
+			HitBox.SetActive(false);
 		}
 	}
 
