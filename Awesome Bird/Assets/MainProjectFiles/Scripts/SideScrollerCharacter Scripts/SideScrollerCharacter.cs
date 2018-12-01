@@ -124,7 +124,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D target) {
 		// Platform collision
-		if (target.gameObject.tag == TagManager.GROUND_TAG) {
+		if (target.gameObject.tag == TagManager.GROUND_TAG || target.gameObject.tag == TagManager.ENEMY_TAG) {
 			if (myBody.velocity.y <= 1f) {
 				first_Jump = true;
 				second_Jump = true;			
@@ -147,6 +147,8 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 
 	}
+
+
 
 	void OnTriggerEnter2D(Collider2D target) {
 

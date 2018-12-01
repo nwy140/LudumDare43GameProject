@@ -29,8 +29,10 @@ public class EnemyPatrol : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Move();	
 		
+		if(myBody){
+			Move();	
+		}
 	}
 
 	void Move() {

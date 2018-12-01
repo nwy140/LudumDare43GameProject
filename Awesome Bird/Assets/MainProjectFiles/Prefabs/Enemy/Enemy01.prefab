@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61759553123440344}
   - component: {fileID: 114054046931416302}
   - component: {fileID: 114029397810145578}
+  - component: {fileID: 114805256579294536}
   m_Layer: 0
   m_Name: Enemy01
   m_TagString: Enemy
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 40
   death_spawnChance: 30
+--- !u!114 &114805256579294536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1432568512281246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1105b58abd6dd443eab2fc978a050001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deactivate_when_tooFar: 1
+  activate_when_Near: 1
 --- !u!212 &212782324628335956
 SpriteRenderer:
   m_ObjectHideFlags: 1
