@@ -24,16 +24,29 @@ public class DeactivateGameobject : MonoBehaviour {
 	public void DeactivateGameObj() {
 		//toofar
 			//disable movement
+		if(myBody){
   			myBody.constraints = RigidbodyConstraints2D.FreezeAll;
 			print("deactivate obj : " + gameObject.name);
+		} else{
+			//Get all scripts
+			MonoBehaviour[] scripts = gameObject.GetComponents(typeof(MonoBehaviour)) as MonoBehaviour[];
+			for(int i = 0; i<scripts.Length; i++){
+				// if not current script
+				if(scripts[i].GetType() != GetType()){
+					scripts[i].enabled = false;
+				} 
+			}
+		}	
 			
 	}
 	public void ActivateGameObj() {
 		//near
 			//enable movement
+		if(myBody){
             myBody.constraints = RigidbodyConstraints2D.None;
 			myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
 			print("activate obj : " + gameObject.name);
+		}	
 
 	
 

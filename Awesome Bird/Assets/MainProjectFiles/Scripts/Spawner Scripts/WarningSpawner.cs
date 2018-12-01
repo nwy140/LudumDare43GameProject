@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class WarningSpawner : MonoBehaviour {
 
-	private float spawn_Left = -2.25f, spawn_Right = 2.25f;
+	public float spawn_Left = -1f, spawn_Right = 1f;
 
 	private SpriteRenderer sr;
 
-	public GameObject dogPrefab;
-	private float pushForce = 10f;
+	public GameObject spawnPrefab;
+	private float pushForce = 0f;
 
 	void Awake() {
 		sr = GetComponent<SpriteRenderer> ();
@@ -43,7 +43,7 @@ public class WarningSpawner : MonoBehaviour {
 
 	void SpawnObstacle() {
 
-		GameObject obstacle = Instantiate (dogPrefab);
+		GameObject obstacle = Instantiate (spawnPrefab);
 
 		Vector3 temp = transform.position;
 

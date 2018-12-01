@@ -11,7 +11,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 	
 	// Character Stats
 
-	public float move_Speed = 3.5f;
+	public float move_Speed = 3f;
 	public float max_moveSpeed = 20f;
 	public float jump_Force = 5f, second_Jump_Force = 7f;
 	private bool first_Jump, second_Jump = true;
@@ -49,13 +49,13 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 	void Move() {
 		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
-			myBody.velocity +=  new Vector2 (Mathf.Clamp(-move_Speed,-max_moveSpeed,+max_moveSpeed), 0f);
+			myBody.velocity =  new Vector2 (Mathf.Clamp(-move_Speed,-max_moveSpeed,+max_moveSpeed), myBody.velocity.y);
 			goLeft = true;
 			sr.flipX = goLeft;
 			
 		} 
 		else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
-			myBody.velocity +=  new Vector2 (Mathf.Clamp(+move_Speed,-max_moveSpeed,+max_moveSpeed), 0f);			
+			myBody.velocity =  new Vector2 (Mathf.Clamp(+move_Speed,-max_moveSpeed,+max_moveSpeed), myBody.velocity.y);			
 			goLeft = false;
 			sr.flipX = goLeft;
 			
@@ -91,7 +91,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 	void Combat(){
 		if(Input.GetMouseButtonDown(0)){
-			SoundManager.instance.atkSoundManager.Play();
+			SoundManager.instance.PlayAtkSound();
 			anim.Play(TagManager.Atk_ANIMATION);
 			
 		}
@@ -125,6 +125,8 @@ public class SideScrollerCharacter : MonoBehaviour {
 		// if falling or airborne , play anim		
 		if (myBody.velocity.y < -0.1 || myBody.velocity.y > 0.1  ){ 
 			anim.SetBool (TagManager.JUMP_BOOL_ANIMPARAM,true);
+		} else if((anim.GetCurrentAnimatorStateInfo(0).IsName(TagManager.JUMP_ANIMATION)) && myBody.velocity.y ==0f  ){
+			ResetDoubleJump();
 		}
 
 		//enable hitbox when attacking anim only
@@ -135,16 +137,20 @@ public class SideScrollerCharacter : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D target) {
-		// Platform collision
-		if (target.gameObject.tag == TagManager.GROUND_TAG || target.gameObject.tag == TagManager.ENEMY_TAG) {
+	void ResetDoubleJump(){
+			anim.SetBool (TagManager.JUMP_BOOL_ANIMPARAM,false);						
+
 			if (myBody.velocity.y <= 1f) {
 				first_Jump = true;
 				second_Jump = true;			
-				anim.SetBool (TagManager.JUMP_BOOL_ANIMPARAM,false);						
-			}			
+			}				
+	}
+	void OnCollisionEnter2D(Collision2D target) {
+		// Platform collision
+	//	if (target.gameObject.tag == TagManager.GROUND_TAG || target.gameObject.tag == TagManager.ENEMY_TAG  ) {
+	//		ResetDoubleJump();
 
-		}
+	//	} 
 		// Enemies Collision
 			// reduce HP
 		if (target.gameObject.tag == TagManager.ENEMY_TAG) {
