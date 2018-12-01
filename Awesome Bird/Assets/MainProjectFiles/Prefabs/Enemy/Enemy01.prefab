@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 40
   death_spawnChance: 30
+  death_Sprite: {fileID: 21300000, guid: 454fa96b2fe6ad049ad75afc7839dd50, type: 3}
 --- !u!114 &114805256579294536
 MonoBehaviour:
   m_ObjectHideFlags: 1

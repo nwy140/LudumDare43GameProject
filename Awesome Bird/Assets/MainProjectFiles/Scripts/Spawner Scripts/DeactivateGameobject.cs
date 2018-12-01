@@ -29,13 +29,7 @@ public class DeactivateGameobject : MonoBehaviour {
 			print("deactivate obj : " + gameObject.name);
 		} else{
 			//Get all scripts
-			MonoBehaviour[] scripts = gameObject.GetComponents(typeof(MonoBehaviour)) as MonoBehaviour[];
-			for(int i = 0; i<scripts.Length; i++){
-				// if not current script
-				if(scripts[i].GetType() != GetType()){
-					scripts[i].enabled = false;
-				} 
-			}
+
 		}	
 			
 	}

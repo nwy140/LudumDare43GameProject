@@ -16,7 +16,7 @@ public class WarningSpawner : MonoBehaviour {
 	}
 
 	void Start () {
-		RandomPosition ();
+//		RandomPosition ();
 
 		InvokeRepeating ("SpawnObstacle", Random.Range(3, 5), 5);
 
@@ -37,7 +37,7 @@ public class WarningSpawner : MonoBehaviour {
 
 		}
 
-		transform.position = temp;
+	//	transform.position = temp;
 
 	}
 
@@ -52,18 +52,18 @@ public class WarningSpawner : MonoBehaviour {
 			obstacle.transform.position = new Vector3 (temp.x + 5f,
 				temp.y, 0f);
 
-			obstacle.GetComponent<Rigidbody2D> ().velocity = new Vector2 (
-				-pushForce, obstacle.GetComponent<Rigidbody2D> ().velocity.y);
+			// obstacle.GetComponent<Rigidbody2D> ().velocity = new Vector2 (
+			// 	-pushForce, obstacle.GetComponent<Rigidbody2D> ().velocity.y);
 
 		} else {
 
 			obstacle.transform.position = new Vector3 (temp.x - 5f,
 				temp.y, 0f);
 
-			obstacle.GetComponent<SpriteRenderer> ().flipX = true;
+			// obstacle.GetComponent<SpriteRenderer> ().flipX = true;
 
-			obstacle.GetComponent<Rigidbody2D> ().velocity = new Vector2 (
-				pushForce, obstacle.GetComponent<Rigidbody2D> ().velocity.y);
+			// obstacle.GetComponent<Rigidbody2D> ().velocity = new Vector2 (
+			// 	pushForce, obstacle.GetComponent<Rigidbody2D> ().velocity.y);
 		
 		}
 

@@ -18,12 +18,11 @@ public class HitBox : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {	
 
 		// protect null ptr
-		if(other!=null){
-			if(other.gameObject.tag == TagManager.ENEMY_TAG){
-				SoundManager.instance.hitSoundManager.Play();
-				other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-			}
+		if(other.gameObject.tag == TagManager.ENEMY_TAG){
+			SoundManager.instance.hitSoundManager.Play();
+			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
 		}
+	
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {

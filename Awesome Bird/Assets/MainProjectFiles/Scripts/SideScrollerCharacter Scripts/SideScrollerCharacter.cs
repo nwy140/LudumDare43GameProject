@@ -133,6 +133,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 		if(anim.GetCurrentAnimatorStateInfo(0).IsName(TagManager.Atk_ANIMATION) ){
 			HitBox.SetActive(true);
 		} else{
+			
 			HitBox.SetActive(false);
 		}
 	}
