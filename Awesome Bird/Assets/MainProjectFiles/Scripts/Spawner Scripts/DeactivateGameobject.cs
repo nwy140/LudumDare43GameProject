@@ -14,32 +14,30 @@ public class DeactivateGameobject : MonoBehaviour {
 	}
 	
 	void Update () {
-		if(deactivate_when_tooFar)
+		if(deactivate_when_tooFar && (Vector2.Distance(Camera.main.transform.position, transform.position) > 35f))
 		DeactivateGameObj ();
 
-		if(activate_when_Near)
+		if(activate_when_Near &&  (Vector2.Distance(Camera.main.transform.position, transform.position) < 35f))
 		ActivateGameObj();
 	}
 
-	void DeactivateGameObj() {
+	public void DeactivateGameObj() {
 		//toofar
-		if (Vector2.Distance(Camera.main.transform.position, transform.position) > 35f) {
 			//disable movement
   			myBody.constraints = RigidbodyConstraints2D.FreezeAll;
 			print("deactivate obj : " + gameObject.name);
 			
-		}
-
 	}
-	void ActivateGameObj() {
+	public void ActivateGameObj() {
 		//near
-		if (Vector2.Distance(Camera.main.transform.position, transform.position) < 35f) {
 			//enable movement
             myBody.constraints = RigidbodyConstraints2D.None;
 			myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
 			print("activate obj : " + gameObject.name);
 
-		}
+	
 
 	}
+
+
 }

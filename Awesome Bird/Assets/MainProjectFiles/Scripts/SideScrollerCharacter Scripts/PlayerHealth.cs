@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour {
 	private bool isShielded;
 
 	private Animator anim;
+	private SpriteRenderer sr;
 
 	private Image health_img;
 	public bool isAlive = true;
@@ -21,6 +22,7 @@ public class PlayerHealth : MonoBehaviour {
 	void Awake () {
 		anim = GetComponent<Animator>();
 		health_img = GameObject.Find(TagManager.HP_ICON_HIERACHY).GetComponent<Image>();
+		sr = GetComponent<SpriteRenderer>();
 	}
 
 	void Start(){
@@ -47,6 +49,9 @@ public class PlayerHealth : MonoBehaviour {
 			health_img.fillAmount = health/100f;
 
 			print("Player Took Damage, health is " + health);
+		if (gameObject.activeInHierarchy && health>0) {
+			StartCoroutine (TurnOffOnSign());
+		}
 
 			if(health<=0f){
 				
@@ -70,6 +75,19 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	
 	}
+
+
+	IEnumerator TurnOffOnSign() {
+
+		for(int i =0; i<5; i++){
+			yield return new WaitForSeconds (0.1f);
+			sr.enabled = false;
+
+			yield return new WaitForSeconds (0.1f);
+			sr.enabled = true;
+		}
+	}
+	
 
 
 

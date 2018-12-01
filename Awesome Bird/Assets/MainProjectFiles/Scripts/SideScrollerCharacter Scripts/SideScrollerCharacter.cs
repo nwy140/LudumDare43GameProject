@@ -90,7 +90,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 	}
 
 	void Combat(){
-		if(Input.GetMouseButton(0)){
+		if(Input.GetMouseButtonDown(0)){
 			anim.Play(TagManager.Atk_ANIMATION);
 			
 		}
@@ -184,4 +184,6 @@ public class SideScrollerCharacter : MonoBehaviour {
 		}
 
 	}
+
+	
 }

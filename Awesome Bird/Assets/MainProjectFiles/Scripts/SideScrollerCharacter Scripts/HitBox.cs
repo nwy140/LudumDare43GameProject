@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour {
 
-	public float damage = 40f;
+	public float damage = 30f;
 
 	void Start () {
 		
@@ -16,8 +16,12 @@ public class HitBox : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {	
-		if(other.gameObject.tag == TagManager.ENEMY_TAG){
-			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+
+		// protect null ptr
+		if(other!=null){
+			if(other.gameObject.tag == TagManager.ENEMY_TAG){
+				other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+			}
 		}
 	}
 
