@@ -9,7 +9,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 	private SpriteRenderer sr;
 	
 	// Character Stats
-	public float HP;
+
 	public float move_Speed = 3.5f;
 	public float max_moveSpeed = 20f;
 	public float jump_Force = 5f, second_Jump_Force = 7f;
@@ -66,9 +66,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 			second_Jump = false;
 			myBody.velocity += new Vector2 (0, second_Jump_Force);
 
-
 			SoundManager.instance.PlayJumpSound ();
-
 		}
 
 	}
@@ -90,7 +88,6 @@ public class SideScrollerCharacter : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D target) {
-
 		// Platform collision
 		if (target.gameObject.tag == TagManager.GROUND_TAG) {
 			if (myBody.velocity.y <= 1f) {

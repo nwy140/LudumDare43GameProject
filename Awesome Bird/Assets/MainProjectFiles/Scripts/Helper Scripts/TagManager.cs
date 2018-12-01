@@ -18,6 +18,8 @@ public class TagManager : MonoBehaviour {
 
 	public static string GAME_DATA = "/GameData.dat";
 
+	public static string HP_ICON_HIERACHY = "HP_Icon";
+
 
 
 
