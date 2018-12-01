@@ -33,7 +33,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 //		if (GameplayController.instance.playGame) {
 			AnimControl();
 			Move ();
-
+			Combat();
 			if (Input.GetKeyDown(KeyCode.Space)) {
 				JumpFunc ();
 			}
@@ -81,6 +81,12 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 	}
 
+	void Combat(){
+		if(Input.GetMouseButton(0)){
+			anim.Play(TagManager.Atk_ANIMATION);
+		}
+	}
+
 	void AnimControl(){
 		//if moving, play walk anim
 		if(myBody.velocity.x < -0.1 || myBody.velocity.x > 0.1  ){
@@ -110,7 +116,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 		// Enemies Collision
 			// reduce HP
 		if (target.gameObject.tag == TagManager.ENEMY_TAG) {
-			playerHealth.TakeDamage(20f);	print("III");
+			playerHealth.TakeDamage(20f);
 
 		}
 

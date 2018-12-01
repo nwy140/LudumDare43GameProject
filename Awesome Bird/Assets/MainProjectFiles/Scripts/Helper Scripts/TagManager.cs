@@ -15,6 +15,10 @@ public class TagManager : MonoBehaviour {
 	public static string FINISHLINE = "FinishLine";
 
 	public static string FADE_IN_ANIMATION = "FadeIn";
+	public static string STRIKE_ANIMATION = "Strike";
+	public static string Atk_ANIMATION = "Atk";
+
+
 	public static string JUMP_BOOL_ANIMPARAM= "Jumping";
 	public static string WALK_BOOL_ANIMPARAM= "Walking";
 

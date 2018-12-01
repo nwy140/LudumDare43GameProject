@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 50462558454109922}
   - component: {fileID: 114670227846667346}
   - component: {fileID: 114721133980913876}
-  - component: {fileID: 70626914098932588}
+  - component: {fileID: 61849798887110760}
   m_Layer: 0
-  m_Name: Ninja01
+  m_Name: Ninja01 Sword
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,8 +65,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &70626914098932588
-CapsuleCollider2D:
+--- !u!61 &61849798887110760
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -78,8 +78,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 2.56}
+    newSize: {x: 0.13, y: 0.17}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
   m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_EdgeRadius: 0
 --- !u!95 &95699373598776198
 Animator:
   serializedVersion: 3
@@ -89,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 1266124347119416}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f316014c88527bc4cb7bffcf9c121519, type: 2}
+  m_Controller: {fileID: 9100000, guid: 69359f28c5a173e45a5c308731fd3dfb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -161,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: -40820661
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 56eaee993fc09af458f443ca00e97345, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 097737625e3c0e8419ccfffab34674a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
