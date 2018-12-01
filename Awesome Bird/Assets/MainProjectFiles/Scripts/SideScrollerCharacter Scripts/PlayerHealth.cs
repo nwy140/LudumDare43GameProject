@@ -15,18 +15,25 @@ public class PlayerHealth : MonoBehaviour {
 	private Image health_img;
 	public bool isAlive = true;
 
+	private Vector2 initialpos;
+
 	// Use this for initialization
 	void Awake () {
 		anim = GetComponent<Animator>();
 		health_img = GameObject.Find(TagManager.HP_ICON_HIERACHY).GetComponent<Image>();
 	}
 
+	void Start(){
+		initialpos = transform.position;
+	}
 	void Update(){
 		//for debugging
 		if(Input.GetKeyDown(KeyCode.K)){
 			TakeDamage(20);
 
-		}
+		} 
+		
+	
 	}
 	//getters and setters in C#
 	public bool Shielded{
@@ -44,12 +51,10 @@ public class PlayerHealth : MonoBehaviour {
 			if(health<=0f){
 				
 				anim.Play (TagManager.DEAD_ANIMATION);
-
+				GameplayController.instance.GameOver();
 				//player dies
 				//Destroy PLayer
 				isAlive =false;
-				Destroy(gameObject,2f);
-				LevelManager.instance.RestartLevel();
 
 			}
 		}

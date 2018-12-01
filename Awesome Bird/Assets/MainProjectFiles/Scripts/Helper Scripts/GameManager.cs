@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 	private GameData gameData;
 
 	[HideInInspector]
-	public int bestScore, diamondScore;
+	public int bestScore, coinScore;
 
 	[HideInInspector]
 	public bool[] birds;
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
 		if (gameData == null) {
 
 			bestScore = 0;
-			diamondScore = 1000;
+			coinScore = 1000;
 			selected_Index = 0;
 
 			birds = new bool[7];
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour {
 			gameData = new GameData ();
 
 			gameData.BestScore = bestScore;
-			gameData.DiamondScore = diamondScore;
+			gameData.coinScore = coinScore;
 			gameData.SelectedIndex = selected_Index;
 			gameData.Birds = birds;
 
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour {
 			if(gameData != null) {
 
 				gameData.BestScore = bestScore;
-				gameData.DiamondScore = diamondScore;
+				gameData.coinScore = coinScore;
 				gameData.SelectedIndex = selected_Index;
 				gameData.Birds = birds;
 
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour {
 			if(gameData != null) {
 
 				bestScore = gameData.BestScore;
-				diamondScore = gameData.DiamondScore;
+				coinScore = gameData.coinScore;
 				selected_Index = gameData.SelectedIndex;
 				birds = gameData.Birds;
 

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50462558454109922}
   - component: {fileID: 61233805679266230}
   - component: {fileID: 114670227846667346}
+  - component: {fileID: 114721133980913876}
   m_Layer: 0
   m_Name: Mario01
   m_TagString: Player
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1266124347119416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.71, y: -0.21, z: 0}
+  m_LocalPosition: {x: -11.49, y: -0.21, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,6 +123,19 @@ MonoBehaviour:
   max_moveSpeed: 20
   jump_Force: 6
   second_Jump_Force: 3
+--- !u!114 &114721133980913876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1266124347119416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f649cd20936f84d85604ad04a0c68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  isAlive: 1
 --- !u!212 &212063246530810578
 SpriteRenderer:
   m_ObjectHideFlags: 1

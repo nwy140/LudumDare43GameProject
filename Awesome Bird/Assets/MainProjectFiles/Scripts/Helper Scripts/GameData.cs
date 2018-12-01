@@ -8,19 +8,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 [Serializable]
 public class GameData {
 
-	private int diamond_Score;
+	private int coin_Score;
 	private int best_Score;
 
 	private bool[] birds;
 	private int selected_Index;
 
-	public int DiamondScore {
+	public int coinScore {
 		get { 
-			return diamond_Score;
+			return coin_Score;
 		}
 
 		set {
-			diamond_Score = value;
+			coin_Score = value;
 		}
 	}
 

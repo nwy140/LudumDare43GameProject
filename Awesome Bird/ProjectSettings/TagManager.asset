@@ -13,6 +13,10 @@ TagManager:
   - Potion
   - UIBUTTONS
   - Coin
+  - Enemy
+  - Dog
+  - WorldBoundary
+  - FinishLine
   layers:
   - Default
   - TransparentFX

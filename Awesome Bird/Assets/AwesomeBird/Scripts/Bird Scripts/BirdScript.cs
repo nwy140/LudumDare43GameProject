@@ -109,16 +109,7 @@ public class BirdScript : MonoBehaviour {
 			target.gameObject.SetActive (false);
 		}
 
-		if (target.tag == TagManager.DIAMOND_TAG) {
-
-			GameplayController.instance.DisplayScore (0, 1);
-
-			target.gameObject.SetActive (false);
-
-			SoundManager.instance.PlayDiamondSound ();
-
-		}
-
+	
 	}
 
 } // class

@@ -7,6 +7,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 	private Rigidbody2D myBody;
 	private Animator anim;
 	private SpriteRenderer sr;
+	private PlayerHealth playerHealth;
 	
 	// Character Stats
 
@@ -19,6 +20,8 @@ public class SideScrollerCharacter : MonoBehaviour {
 		myBody = GetComponent<Rigidbody2D> ();
 		sr = GetComponent<SpriteRenderer> ();
 		anim = GetComponent<Animator> ();
+
+		playerHealth = GetComponent<PlayerHealth>();
 	}
 
 	void Start () {
@@ -31,7 +34,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 			AnimControl();
 			Move ();
 
-			if (Input.GetMouseButtonDown (0) || Input.GetKeyDown(KeyCode.Space)) {
+			if (Input.GetKeyDown(KeyCode.Space)) {
 				JumpFunc ();
 			}
 
@@ -49,6 +52,13 @@ public class SideScrollerCharacter : MonoBehaviour {
 			sr.flipX = false;
 		
 		} 
+
+		
+		// stop input by stopping script
+		if(playerHealth.isAlive == false){
+			GetComponent<SideScrollerCharacter>().enabled = false;
+		}
+
 	}
 
 	void JumpFunc() {
@@ -84,7 +94,6 @@ public class SideScrollerCharacter : MonoBehaviour {
 		if (myBody.velocity.y < -0.1 || myBody.velocity.y > 0.1  ){ 
 			anim.SetBool (TagManager.JUMP_BOOL_ANIMPARAM,true);
 		}
-
 	}
 
 	void OnCollisionEnter2D(Collision2D target) {
@@ -99,14 +108,43 @@ public class SideScrollerCharacter : MonoBehaviour {
 		}
 		// Enemies Collision
 			// reduce HP
+		if (target.gameObject.tag == TagManager.ENEMY_TAG) {
+			playerHealth.TakeDamage(20f);	print("III");
 
+		}
+
+				//if reach finishline
+		if(target.gameObject.tag == TagManager.FINISHLINE){
+			;
+			LevelManager.instance.LoadNextLevel();
+		}		
 
 
 	}
 
 	void OnTriggerEnter2D(Collider2D target) {
 
+		if (target.tag == TagManager.SCORE_TAG) {
+			
+			GameplayController.instance.DisplayScore (1, 0);
 
+			target.gameObject.SetActive (false);
+		}
+
+		if (target.tag == TagManager.COIN_TAG) {
+
+			GameplayController.instance.DisplayScore (0, 1);
+
+			target.gameObject.SetActive (false);
+
+			SoundManager.instance.PlayDiamondSound ();
+
+		}
+
+		// if fall out of map // instant kill 
+		if(target.tag == TagManager.WORLDBOUNDARY_TAG){
+			playerHealth.TakeDamage(1000f);
+		}
 
 	}
 }
