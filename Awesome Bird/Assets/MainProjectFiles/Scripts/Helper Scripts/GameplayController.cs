@@ -30,7 +30,7 @@ public class GameplayController : MonoBehaviour {
 
 	void Start () {
 		// mainMenu_DisplayBestScoreText.text = "Best: " + GameManager.instance.bestScore;
-
+		
 		// InstantiatePlayer ();
 	}
 	

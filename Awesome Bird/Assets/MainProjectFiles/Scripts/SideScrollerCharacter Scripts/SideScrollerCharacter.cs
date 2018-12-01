@@ -91,11 +91,15 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 	void Combat(){
 		if(Input.GetMouseButtonDown(0)){
+			SoundManager.instance.atkSoundManager.Play();
 			anim.Play(TagManager.Atk_ANIMATION);
 			
 		}
 
 		if(Input.GetMouseButtonDown(1)){
+			SoundManager.instance.shurikenSoundManager.Play();
+			
+
 			anim.Play (TagManager.SKILL_ANIMATION);
 
 			GameObject thrown = (GameObject)Instantiate (

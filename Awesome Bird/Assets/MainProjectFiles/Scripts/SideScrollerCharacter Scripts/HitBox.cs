@@ -20,6 +20,7 @@ public class HitBox : MonoBehaviour {
 		// protect null ptr
 		if(other!=null){
 			if(other.gameObject.tag == TagManager.ENEMY_TAG){
+				SoundManager.instance.hitSoundManager.Play();
 				other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
 			}
 		}
