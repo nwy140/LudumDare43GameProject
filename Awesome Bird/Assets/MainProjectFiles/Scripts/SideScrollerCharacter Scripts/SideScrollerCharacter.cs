@@ -164,7 +164,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 		} 
 		// Enemies Collision
 			// reduce HP
-		if (target.gameObject.tag == TagManager.ENEMY_TAG ) {
+		if (target.gameObject.tag == TagManager.ENEMY_TAG || target.gameObject.tag == TagManager.OBSTACLE_TAG) {
 			EnemyPatrol enemyPatrol = target.gameObject.GetComponent<EnemyPatrol>();
 
 			if(enemyPatrol){
@@ -202,6 +202,17 @@ public class SideScrollerCharacter : MonoBehaviour {
 			target.gameObject.SetActive (false);
 
 			SoundManager.instance.PlayDiamondSound ();
+
+		}
+		if (target.tag == TagManager.POTION_TAG) {
+
+			GameplayController.instance.DisplayScore (1, 0); //potion point
+
+			target.gameObject.SetActive (false);
+
+			SoundManager.instance.PlayPotionSound ();
+			playerHealth.HealPlayer(40f);
+
 
 		}
 

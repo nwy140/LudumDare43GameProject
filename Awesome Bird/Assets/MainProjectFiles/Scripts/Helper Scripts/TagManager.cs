@@ -9,6 +9,7 @@ public class TagManager : MonoBehaviour {
 	public static string GROUND_TAG = "Ground";
 	public static string WARNING_TAG = "Warning";
 	public static string COIN_TAG = "Coin";
+	public static string POTION_TAG = "Potion";
 	public static string SCORE_TAG = "Score";
 	public static string ENEMY_TAG = "Enemy";
 	public static string OBSTACLE_TAG = "Obstacle";

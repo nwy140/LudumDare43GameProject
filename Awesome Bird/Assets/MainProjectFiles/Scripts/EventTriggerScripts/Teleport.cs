@@ -19,6 +19,7 @@ public class Teleport : MonoBehaviour {
 		if(other.tag == TagManager.ENEMY_TAG || other.tag == TagManager.PLAYER_TAG){
 			other.transform.position = TeleportPoint.transform.position;
 			print("Teleporting to " + other.transform.position.ToString() );
+			SoundManager.instance.PlayTeleportSound();	
 		}	
 	}
 

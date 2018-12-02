@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour {
 
 	public static SoundManager instance;
 
-	public AudioSource bgSoundManager, diamondSoundManager, jumpSoundManager, atkSoundManager, shurikenSoundManager, hitSoundManager,hurtSoundManager;
+	public AudioSource bgSoundManager, diamondSoundManager, jumpSoundManager, atkSoundManager, shurikenSoundManager, hitSoundManager,hurtSoundManager,potionSoundManager,teleportSoundManager;
 
 	public Button musicBtn;
 	public Sprite music_On_Img, music_Off_Img;
@@ -47,6 +47,11 @@ public class SoundManager : MonoBehaviour {
 		diamondSoundManager.Play ();
 	}
 
+	public void PlayPotionSound() {
+		if(potionSoundManager)
+		potionSoundManager.Play ();
+	}
+
 	public void PlayJumpSound() {
 		if(jumpSoundManager)
 		jumpSoundManager.Play ();
@@ -78,6 +83,10 @@ public class SoundManager : MonoBehaviour {
 		hurtSoundManager.Play();
 	}	
 
+	public void PlayTeleportSound(){
+		if(teleportSoundManager)
+		teleportSoundManager.Play();
+	}	
 
 
 } // class
