@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deactivate_when_tooFar: 1
   activate_when_Near: 1
-  distanceActivebyX: 35
+  distanceActivebyX: 30
 --- !u!114 &114277483118795606
 MonoBehaviour:
   m_ObjectHideFlags: 1

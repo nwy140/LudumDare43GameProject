@@ -134,7 +134,13 @@ MonoBehaviour:
   goLeft: 1
   move_Speed: 2.1
   max_moveSpeed: 5
-  Damage: 20
+  jump_Force: 5
+  damage: 20
+  HitBox: {fileID: 0}
+  Shuriken: {fileID: 0}
+  meeleeAtk: 1
+  rangeAtk: 0
+  canJump: 0
 --- !u!114 &114324523226153482
 MonoBehaviour:
   m_ObjectHideFlags: 1

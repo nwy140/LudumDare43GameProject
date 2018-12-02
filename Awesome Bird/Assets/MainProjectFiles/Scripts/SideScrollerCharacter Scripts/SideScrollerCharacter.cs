@@ -14,8 +14,12 @@ public class SideScrollerCharacter : MonoBehaviour {
 	public float move_Speed = 3f;
 	public float max_moveSpeed = 20f;
 	public float jump_Force = 5f, second_Jump_Force = 7f;
+	public bool boost_Dash;
+	public float boostSpeed = 6f;
+
 	private bool first_Jump, second_Jump = true;
 	private bool goLeft;
+
 
 	public GameObject Shuriken;
 	public GameObject HitBox;
@@ -66,6 +70,11 @@ public class SideScrollerCharacter : MonoBehaviour {
 		if(playerHealth.isAlive == false){
 			GetComponent<SideScrollerCharacter>().enabled = false;
 		}
+
+		if ((first_Jump  && boost_Dash) &&  (Input.GetKeyDown(KeyCode.LeftShift) ||Input.GetMouseButton(2)) ) //middle mouse button
+		{
+    	   StartCoroutine( Boost(1.2f) ); //Start the Coroutine called "Boost", and feed it the time we want it to boost us
+		}	
 
 	}
 
@@ -203,5 +212,25 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 	}
 
+    IEnumerator Boost(float boostDur) //Coroutine with a single input of a float called boostDur, which we can feed a number when calling
+    {
+		print("Player dash");	
+        float time = 0; //create float to store the time this coroutine is operating
+        boost_Dash = false; //set canBoost to false so that we can't keep boosting while boosting
+ 
+        while(boostDur > time) //we call this loop every frame while our custom boostDuration is a higher value than the "time" variable in this coroutine
+        {
+            time += Time.deltaTime; //Increase our "time" variable by the amount of time that it has been since the last update
+            if(goLeft){
+			myBody.velocity = new Vector2(-boostSpeed, myBody.velocity.y); //set our rigidbody velocity to a custom velocity every frame, so that we get a steady boost direction like in Megaman
+			}
+            else{
+				myBody.velocity = new Vector2(+boostSpeed, myBody.velocity.y); //set our rigidbody velocity to a custom velocity every frame, so that we get a steady boost direction like in Megaman		
+			}
+			yield return 0; //go to next frame
+        }
+         yield return new WaitForSeconds(3f); //Cooldown time for being able to boost again, if you'd like.
+         boost_Dash = true; //set back to true so that we can boost again.
+    } //from https://forum.unity.com/threads/2d-platformer-mega-man-x-style-dash.228648/
 	
 }

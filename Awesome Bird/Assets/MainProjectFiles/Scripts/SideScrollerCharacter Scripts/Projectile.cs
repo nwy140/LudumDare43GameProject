@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour {
         void Awake ()
         {
             myBody = GetComponent<Rigidbody2D>();
+            Destroy(gameObject,3f); // lifespan
         }
        
         // Update is called once per frame

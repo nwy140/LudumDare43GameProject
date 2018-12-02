@@ -30,7 +30,7 @@ public class EnemyPatrol : MonoBehaviour {
 		enemyHealth = GetComponent<EnemyHealth>();
 		
 	}
-	void Start(){
+	void OnEnable(){
 		if(autoChangeDirection){
 
 		InvokeRepeating ("ChangeDirection", Random.Range(3, 10), 5);
@@ -38,6 +38,10 @@ public class EnemyPatrol : MonoBehaviour {
 		InvokeRepeating ("Jump", Random.Range(10, 20), 3);
 
 		}
+	}
+
+	void OnDisable() {
+		CancelInvoke () ;		
 	}
 	
 	// Update is called once per frame
@@ -146,4 +150,8 @@ public class EnemyPatrol : MonoBehaviour {
 		}
 		
 	}
+
+
+	
+
 }
