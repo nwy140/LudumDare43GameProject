@@ -14,6 +14,8 @@ public class TagManager : MonoBehaviour {
 	public static string OBSTACLE_TAG = "Obstacle";
 	public static string SPAWNER_TAG = "Spawner";	
 	public static string WORLDBOUNDARY_TAG = "WorldBoundary";
+	public static string LOD_TAG = "LOD";
+
 	public static string FINISHLINE = "FinishLine";
 
 	public static string FADE_IN_ANIMATION = "FadeIn";

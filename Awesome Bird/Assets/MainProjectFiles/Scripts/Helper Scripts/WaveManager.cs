@@ -12,13 +12,20 @@ public class WaveManager : MonoBehaviour {
 	public bool loadingNextWave;
 
 	GameObject[] enemies ;
-	GameObject[] spawners ;
-	
+
+	SmartSpawn.SmartSpawnScript smartSpawnScript;	
+
+	public float WaveScoreRequired = 40f;
 
 
 	// Use this for initialization
 	void Awake () {
 		MakeInstance();
+		
+	}
+
+	void Start(){
+		smartSpawnScript = GameObject.FindGameObjectWithTag(TagManager.SPAWNER_TAG).GetComponent<SmartSpawn.SmartSpawnScript>();
 	}
 	
 	void MakeInstance(){
@@ -28,7 +35,11 @@ public class WaveManager : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		WaveClearCondition();
+	
+		if( int.Parse(GameplayController.instance.scoreText.text) >= currentWave * WaveScoreRequired){
+		//	WaveClearCondition();
+		}
+	
 
 	}
 
@@ -36,36 +47,52 @@ public class WaveManager : MonoBehaviour {
 	public void WaveClearCondition(){
 		enemies = GameObject.FindGameObjectsWithTag(TagManager.ENEMY_TAG);	
 		enemies_Left = enemies.Length;	
-		spawners = GameObject.FindGameObjectsWithTag(TagManager.SPAWNER_TAG);		
+				
 		// All enemies dead
-		if(enemies_Left<=0){
+		//if(enemies_Left<=0){
 				StartCoroutine("LoadNextWave");
-		}
+		//}
 	}
 
 	public IEnumerator LoadNextWave() {
 		
-		//Loading Next Wave
-			//disable all spawner and kill all enemy prefabs
-		
-		for(int i = 0 ; i<spawners.Length; i++){
-			spawners[i].SetActive(false);
-		}
-	
-		for(int i = 0 ; i<enemies.Length; i++){
-			enemies[i].GetComponent<EnemyHealth>().TakeDamage(10000f); // instant kill
-		}
-
-		yield return new WaitForSeconds (3f);
+		EndWave();
+		yield return new WaitForSeconds (5f);
 		//Wave Loaded
 		currentWave++;
+		print("Loading Next Wave" + currentWave);
+		smartSpawnScript.enabled=true;
 		// reactivate spawner
-		
-		for(int i = 0 ; i<enemies.Length; i++){
-			spawners[i].SetActive(true);
-		}		
+	//	smartSpawnScript.waveResetTime = ;
 
 	
 	}
 
+	void EndWave(){
+		//Loading Next Wave
+			//disable all spawner and kill all enemy prefabs
+		loadingNextWave=true;
+		for(int i = 0 ; i<enemies.Length; i++){
+			enemies[i].GetComponent<EnemyHealth>().TakeDamage(10000f); // instant kill
+		}		
+		smartSpawnScript.enabled = false; 
+	}
+
 }
+
+
+// smart spawner logic
+/*
+	Wave 1 
+	Continue to spawn enemies a few times 
+	A particular score reached for wave 1
+	Kill all enemies, stop wave
+	Wave 2
+	Change wave spawner prefabs
+	enable wave
+	Continue to spawn enemies a few times 
+	A particular score reached for wave 1
+	Kill all enemies, enable reset waves after time
+
+
+ */

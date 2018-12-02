@@ -33,8 +33,9 @@ public class EnemyHealth : MonoBehaviour {
 				//spawn coin
 			} 
 				
-
-			sr.sprite = death_Sprite;
+			if(sr){
+				sr.sprite = death_Sprite;
+			}
 			Destroy(gameObject , 0.3f);
 		}  
 
@@ -44,11 +45,16 @@ public class EnemyHealth : MonoBehaviour {
 
 		for(int i =0; i<5; i++){
 			yield return new WaitForSeconds (0.1f);
-			sr.enabled = false;
+			if(sr){
+				sr.enabled = false;
+			} 
 
 			yield return new WaitForSeconds (0.1f);
-			sr.enabled = true;
+			if(sr){
+				sr.enabled = true;
+			}
 		}
+	
 	}	
 
 

@@ -14,10 +14,12 @@ public class HitBox : MonoBehaviour {
 	
 	// Update is called once per frame	
 	void Update () {
-		
+		if(transform.parent.GetComponent<SpriteRenderer>()){
+			AdjustOffset();
+		}
 	}
 
-	void OnEnable() {
+	void AdjustOffset() {
 		
 		//hit left
 		if(transform.parent.GetComponent<SpriteRenderer>().flipX == true ){
@@ -32,12 +34,17 @@ public class HitBox : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {	
 
-		// protect null ptr
-		if(other.gameObject.tag == TagManager.ENEMY_TAG){
+		// protect null ptr // attack enemy as player
+		if(other.gameObject.tag == TagManager.ENEMY_TAG && transform.parent.tag == TagManager.PLAYER_TAG ){
 			SoundManager.instance.hitSoundManager.Play();
 			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
 		}
 	
+		// protect null ptr // attack player as enemy
+		if(other.gameObject.tag == TagManager.PLAYER_TAG && transform.parent.tag == TagManager.ENEMY_TAG ){
+			SoundManager.instance.hitSoundManager.Play();
+			other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {

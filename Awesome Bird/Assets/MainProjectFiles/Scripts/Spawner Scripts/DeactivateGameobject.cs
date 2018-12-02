@@ -52,7 +52,7 @@ public class DeactivateGameobject : MonoBehaviour {
 
 			//detach to avoid being disabled
 			if(tempParent.transform.childCount > 0){
-				transform.parent.DetachChildren();	
+				transform.parent = null ; //detach LOD	
 			}
 			tempParent.SetActive(false);
 		}
