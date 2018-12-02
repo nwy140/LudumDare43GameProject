@@ -10,11 +10,11 @@ public class EnemyPatrol : MonoBehaviour {
 	public bool goLeft =true;
 	public float move_Speed = 2.8f;
 	public float max_moveSpeed = 5f;
-
+	public float jump_Force = 5f;
 	public float damage = 20f; 
 	public GameObject HitBox;
 	public GameObject Shuriken;
-	public bool meeleeAtk = true, rangeAtk = false;
+	public bool meeleeAtk = true, rangeAtk = false, canJump = true;
 	private Animator anim;
 	private SpriteRenderer sr;
 
@@ -35,6 +35,7 @@ public class EnemyPatrol : MonoBehaviour {
 
 		InvokeRepeating ("ChangeDirection", Random.Range(3, 10), 5);
 		InvokeRepeating ("Combat", Random.Range(2, 3), 3);
+		InvokeRepeating ("Jump", Random.Range(10, 20), 3);
 
 		}
 	}
@@ -130,11 +131,19 @@ public class EnemyPatrol : MonoBehaviour {
 			transform.position,
 			transform.rotation);
 
-			thrown.GetComponent<Projectile>().instigator = gameObject;			
+			thrown.GetComponent<Projectile>().instigator = gameObject;
+			thrown.GetComponent<Projectile>().move_Speed = 10f;				
 			thrown.GetComponent<Projectile>().goLeft = goLeft;
 			print(name + " tries to melee attack player ");
 
 		}		
+	}
+
+	void Jump(){
+		if(canJump){
+			myBody.velocity += new Vector2 (0, jump_Force);
+			SoundManager.instance.PlayJumpSound ();			
+		}
 		
 	}
 }

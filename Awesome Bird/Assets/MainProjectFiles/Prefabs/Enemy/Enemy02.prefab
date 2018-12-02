@@ -1153,11 +1153,13 @@ MonoBehaviour:
   goLeft: 1
   move_Speed: 2.8
   max_moveSpeed: 5
+  jump_Force: 5
   damage: 20
   HitBox: {fileID: 1805465173853740}
   Shuriken: {fileID: 1310341772252484, guid: 3d9e5803c61096744add4167a5987b00, type: 2}
   meeleeAtk: 1
   rangeAtk: 0
+  canJump: 1
 --- !u!114 &114817357441642350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1169,6 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752a3c5261623d241b1fbef787d727e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instigator: {fileID: 0}
   damage: 30
   hitBoxOffsetByX: 1.04
 --- !u!210 &210983474817770572
