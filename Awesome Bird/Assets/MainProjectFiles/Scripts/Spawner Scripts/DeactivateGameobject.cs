@@ -5,23 +5,27 @@ using UnityEngine;
 public class DeactivateGameobject : MonoBehaviour {
 	public bool deactivate_when_tooFar = true;
 	public bool activate_when_Near = true;
-
-	private Rigidbody2D myBody;
+	//Gameobj should only be Active between distance
+	public float distanceActivebyX = 35f ; 
 	
+	private Rigidbody2D myBody;
+	private GameObject tempParent;
+
 	
 	void Awake(){
 		myBody = GetComponent<Rigidbody2D>();
 	}
-	
-	void Update () {
-		if(deactivate_when_tooFar && (Vector2.Distance(Camera.main.transform.position, transform.position) > 35f))
-		DeactivateGameObj ();
-
-		if(activate_when_Near &&  (Vector2.Distance(Camera.main.transform.position, transform.position) < 35f))
-		ActivateGameObj();
+	void Start(){
+		if(transform.parent.gameObject){
+			tempParent = transform.parent.gameObject;
+		}		
 	}
 
-	public void DeactivateGameObj() {
+	void Update () {
+		ManageLOD();
+	}
+
+	public void DeactivateGameObjMovement() {
 		//toofar
 			//disable movement
 		if(myBody){
@@ -29,11 +33,9 @@ public class DeactivateGameobject : MonoBehaviour {
 			print("deactivate obj : " + gameObject.name);
 		} else{
 			//Get all scripts
-
-		}	
-			
+		}			
 	}
-	public void ActivateGameObj() {
+	public void ActivateGameObjMovement() {
 		//near
 			//enable movement
 		if(myBody){
@@ -41,10 +43,36 @@ public class DeactivateGameobject : MonoBehaviour {
 			myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
 			print("activate obj : " + gameObject.name);
 		}	
-
-	
-
 	}
 
+	void ManageLOD(){
+		
+		//manage Level Of Detail
+		if(deactivate_when_tooFar && (Mathf.Abs( Camera.main.transform.position.x - transform.position.x ) > distanceActivebyX ) ) {
 
+			//detach to avoid being disabled
+			if(tempParent.transform.childCount > 0){
+				transform.parent.DetachChildren();	
+			}
+			tempParent.SetActive(false);
+		}
+
+		if(activate_when_Near &&  (Mathf.Abs( Camera.main.transform.position.x - transform.position.x ) < distanceActivebyX )){
+			if(tempParent){
+				transform.SetParent(tempParent.transform);
+			}
+			tempParent.SetActive(true);	
+		}			
+	}
+
+	public void DeactivateGameObj(GameObject objRef) {
+
+		objRef.SetActive(false);
+
+	}
+	public void ActivateGameObj(GameObject objRef) {
+
+		objRef.SetActive(true);
+
+	}
 }

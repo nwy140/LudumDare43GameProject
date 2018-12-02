@@ -49,9 +49,9 @@ public class PlayerHealth : MonoBehaviour {
 			health_img.fillAmount = health/100f;
 
 			print("Player Took Damage, health is " + health);
-		if (gameObject.activeInHierarchy && health>0) {
-			StartCoroutine (TurnOffOnSign());
-		}
+			if (gameObject.activeInHierarchy && health>0) {
+				StartCoroutine (TurnOffOnSign());
+			}
 
 			if(health<=0f){
 				
@@ -78,7 +78,7 @@ public class PlayerHealth : MonoBehaviour {
 
 
 	IEnumerator TurnOffOnSign() {
-
+		isShielded = true;
 		for(int i =0; i<5; i++){
 			yield return new WaitForSeconds (0.1f);
 			sr.enabled = false;
@@ -86,6 +86,7 @@ public class PlayerHealth : MonoBehaviour {
 			yield return new WaitForSeconds (0.1f);
 			sr.enabled = true;
 		}
+		isShielded = false;
 	}
 	
 

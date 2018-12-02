@@ -124,15 +124,15 @@ public class SideScrollerCharacter : MonoBehaviour {
 
 		// if falling or airborne , play anim		
 		if (myBody.velocity.y < -0.1 || myBody.velocity.y > 0.1  ){ 
-			anim.SetBool (TagManager.JUMP_BOOL_ANIMPARAM,true);
-		} else if((anim.GetCurrentAnimatorStateInfo(0).IsName(TagManager.JUMP_ANIMATION)) && myBody.velocity.y ==0f  ){
+			anim.SetBool (TagManager.JUMP_BOOL_ANIMPARAM,true);   //fall
+		} else if((anim.GetCurrentAnimatorStateInfo(0).IsName(TagManager.JUMP_ANIMATION)) && (myBody.velocity.y ==0f)  ){
 			ResetDoubleJump();
 		}
 
 		//enable hitbox when attacking anim only
 		if(anim.GetCurrentAnimatorStateInfo(0).IsName(TagManager.Atk_ANIMATION) ){
 			HitBox.SetActive(true);
-		} else{
+		} else{ // hide too fast, hitbox less likely to hit enemies
 			
 			HitBox.SetActive(false);
 		}
@@ -148,10 +148,10 @@ public class SideScrollerCharacter : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D target) {
 		// Platform collision
-	//	if (target.gameObject.tag == TagManager.GROUND_TAG || target.gameObject.tag == TagManager.ENEMY_TAG  ) {
-	//		ResetDoubleJump();
+		if (target.gameObject.tag == TagManager.GROUND_TAG || target.gameObject.tag == TagManager.ENEMY_TAG  ) {
+			ResetDoubleJump();
 
-	//	} 
+		} 
 		// Enemies Collision
 			// reduce HP
 		if (target.gameObject.tag == TagManager.ENEMY_TAG) {
