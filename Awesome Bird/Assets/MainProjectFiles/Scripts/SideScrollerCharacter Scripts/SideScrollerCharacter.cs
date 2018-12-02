@@ -164,7 +164,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 		} 
 		// Enemies Collision
 			// reduce HP
-		if (target.gameObject.tag == TagManager.ENEMY_TAG || target.gameObject.tag == TagManager.OBSTACLE_TAG ) {
+		if (target.gameObject.tag == TagManager.ENEMY_TAG ) {
 			EnemyPatrol enemyPatrol = target.gameObject.GetComponent<EnemyPatrol>();
 
 			if(enemyPatrol){

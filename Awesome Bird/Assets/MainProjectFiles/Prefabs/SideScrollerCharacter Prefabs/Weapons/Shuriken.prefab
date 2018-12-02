@@ -89,8 +89,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3877a9b3cf57e044eb779b353f209699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instigator: {fileID: 0}
   goLeft: 0
   move_Speed: 30
+  damage: 20
+  lifeSpan: 3
+  destroyAfterTouch: 1
 --- !u!212 &212323672198460598
 SpriteRenderer:
   m_ObjectHideFlags: 1

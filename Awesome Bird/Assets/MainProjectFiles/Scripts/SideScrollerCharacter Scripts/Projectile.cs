@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour {
         public float move_Speed = 30f;
         public float damage = 20f;
         public float lifeSpan = 3f;
+        public bool destroyAfterTouch = true;
 
         // Use this for initialization
         void Awake ()
@@ -38,21 +39,26 @@ public class Projectile : MonoBehaviour {
                 if(other.gameObject.tag == TagManager.ENEMY_TAG && instigator.tag == TagManager.PLAYER_TAG ){
                 SoundManager.instance.hitSoundManager.Play();
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-                Destroy(gameObject);
+                    if(destroyAfterTouch){
+                    Destroy(gameObject);
+                    }
                 }
         
                 // protect null ptr // attack player as enemy
                 if(other.gameObject.tag == TagManager.PLAYER_TAG && instigator.tag == TagManager.ENEMY_TAG ){
                     SoundManager.instance.hitSoundManager.Play();
                     other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                    if(destroyAfterTouch){
                     Destroy(gameObject);
+                    }
                 }
 
             } else if(other.gameObject.tag == TagManager.PLAYER_TAG){ // just call again
                     SoundManager.instance.hitSoundManager.Play();
                     other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-                    Destroy(gameObject);                
-            }
+                    if(destroyAfterTouch){
+                    Destroy(gameObject);
+                    }            }
 
         }
          void OnCollisionEnter2D(Collision2D other) {
@@ -61,21 +67,25 @@ public class Projectile : MonoBehaviour {
                 if(other.gameObject.tag == TagManager.ENEMY_TAG && instigator.tag == TagManager.PLAYER_TAG ){
                 SoundManager.instance.hitSoundManager.Play();
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-                Destroy(gameObject);
-                }
+                    if(destroyAfterTouch){
+                    Destroy(gameObject);
+                    }                }
         
                 // protect null ptr // attack player as enemy
                 if(other.gameObject.tag == TagManager.PLAYER_TAG && instigator.tag == TagManager.ENEMY_TAG ){
                     SoundManager.instance.hitSoundManager.Play();
                     other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                    if(destroyAfterTouch){
                     Destroy(gameObject);
-                }
+                    }                }
 
             } else if(other.gameObject.tag == TagManager.PLAYER_TAG){ // just call again
                     SoundManager.instance.hitSoundManager.Play();
                     other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-                    Destroy(gameObject);                
-            }
+                    if(destroyAfterTouch){
+                    Destroy(gameObject);
+                    }            
+                }
             
 
         }
