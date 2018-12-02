@@ -97,7 +97,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 		}
 
 		if(Input.GetMouseButtonDown(1)){
-			SoundManager.instance.shurikenSoundManager.Play();
+			SoundManager.instance.PlayShurikenSound();
 			
 
 			anim.Play (TagManager.SKILL_ANIMATION);
@@ -154,8 +154,14 @@ public class SideScrollerCharacter : MonoBehaviour {
 		} 
 		// Enemies Collision
 			// reduce HP
-		if (target.gameObject.tag == TagManager.ENEMY_TAG) {
-			playerHealth.TakeDamage(20f);
+		if (target.gameObject.tag == TagManager.ENEMY_TAG || target.gameObject.tag == TagManager.OBSTACLE_TAG ) {
+			EnemyPatrol enemyPatrol = target.gameObject.GetComponent<EnemyPatrol>();
+
+			if(enemyPatrol){
+				playerHealth.TakeDamage(enemyPatrol.damage);
+			} else{
+				playerHealth.TakeDamage(20f);
+			}
 
 		}
 

@@ -11,14 +11,18 @@ public class EnemyPatrol : MonoBehaviour {
 	public float move_Speed = 2.8f;
 	public float max_moveSpeed = 5f;
 
-	public float Damage = 20f; 
+	public float damage = 20f; 
 
 	private SpriteRenderer sr;
-	
+
+	private EnemyHealth enemyHealth ;
+
+
 	// Use this for initialization
 	void Awake () {
 		sr = GetComponent<SpriteRenderer>();
 		myBody = GetComponent<Rigidbody2D>();
+		enemyHealth = GetComponent<EnemyHealth>();
 	}
 	void Start(){
 		if(autoChangeDirection){
@@ -53,6 +57,13 @@ public class EnemyPatrol : MonoBehaviour {
 			ChangeDirection();
 		}	
 
+	}
+
+	 void OnTriggerEnter2D(Collider2D other) {
+		// if fall out of map // instant kill 
+		if(other.tag == TagManager.WORLDBOUNDARY_TAG){
+			enemyHealth.TakeDamage(1000f);
+		}		
 	}
 
 	void ChangeDirection(){

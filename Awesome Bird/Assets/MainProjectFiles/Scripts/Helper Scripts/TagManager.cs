@@ -11,6 +11,8 @@ public class TagManager : MonoBehaviour {
 	public static string COIN_TAG = "Coin";
 	public static string SCORE_TAG = "Score";
 	public static string ENEMY_TAG = "Enemy";
+	public static string OBSTACLE_TAG = "Obstacle";
+	public static string SPAWNER_TAG = "Spawner";	
 	public static string WORLDBOUNDARY_TAG = "WorldBoundary";
 	public static string FINISHLINE = "FinishLine";
 

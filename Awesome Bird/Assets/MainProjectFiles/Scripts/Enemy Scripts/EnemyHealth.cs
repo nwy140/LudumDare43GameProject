@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour {
 
 	public void TakeDamage(float amount){
 		health -= amount;
-
+		
 
 		if (gameObject.activeInHierarchy && health>0) {
 			StartCoroutine (TurnOffOnSign());
@@ -36,7 +36,8 @@ public class EnemyHealth : MonoBehaviour {
 
 			sr.sprite = death_Sprite;
 			Destroy(gameObject , 0.3f);
-		}
+		}  
+
 	}
 
 	IEnumerator TurnOffOnSign() {

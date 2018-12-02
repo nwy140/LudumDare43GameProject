@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour {
         [HideInInspector]
         public bool goLeft;
         public float move_Speed = 30f;
-        public float Damage = 20f;
+        public float damage = 20f;
         // Use this for initialization
         void Awake ()
         {
@@ -29,11 +29,13 @@ public class Projectile : MonoBehaviour {
         }
 
         void OnTriggerEnter2D(Collider2D other) {
-            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-            if(enemyHealth){
-                enemyHealth.TakeDamage(20f);
+
+            if(other.gameObject.tag == TagManager.ENEMY_TAG){
+                SoundManager.instance.hitSoundManager.Play();
+                other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
                 Destroy(gameObject);
             }
-
         }
+
+        
 }

@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114286241637033172}
   m_Layer: 0
   m_Name: WarningSpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn_Left: -1
   spawn_Right: 1
+  spawn_Limit: 5
   spawnPrefab: {fileID: 1262224329619338, guid: 848c84a3fadbe334692f6142f723ff2e,
     type: 2}
 --- !u!114 &114932478053361964

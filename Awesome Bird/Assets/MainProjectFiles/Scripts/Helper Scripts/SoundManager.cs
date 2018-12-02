@@ -43,16 +43,18 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void PlayDiamondSound() {
+		if(diamondSoundManager)
 		diamondSoundManager.Play ();
 	}
 
 	public void PlayJumpSound() {
+		if(jumpSoundManager)
 		jumpSoundManager.Play ();
 	}
 
 	public void PlayAtkSound(){
 		
-		if(atkSoundManager.isPlaying == false){
+		if(atkSoundManager.isPlaying == false && atkSoundManager){
 			atkSoundManager.Play();
 
 		}
@@ -61,15 +63,18 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void PlayShurikenSound(){
+		if(shurikenSoundManager)
 		shurikenSoundManager.Play();
 	}	
 
 	public void PlayHitSound(){
+		if(hitSoundManager)
 		hitSoundManager.Play();
 
 	}	
 
 	public void PlayHurtSound(){
+		if(hurtSoundManager)
 		hurtSoundManager.Play();
 	}	
 
