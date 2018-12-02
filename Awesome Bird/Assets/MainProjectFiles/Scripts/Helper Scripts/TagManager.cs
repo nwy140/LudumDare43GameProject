@@ -22,6 +22,7 @@ public class TagManager : MonoBehaviour {
 
 	public static string JUMP_BOOL_ANIMPARAM= "Jumping";
 	public static string WALK_BOOL_ANIMPARAM= "Walking";
+	public static string Atk_BOOL_ANIMPARAM = "Atk";
 
 	public static string GAME_DATA = "/GameData.dat";
 
