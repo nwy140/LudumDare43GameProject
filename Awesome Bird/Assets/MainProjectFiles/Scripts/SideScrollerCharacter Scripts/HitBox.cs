@@ -29,10 +29,10 @@ public class HitBox : MonoBehaviour {
 		//hit left
 		if(transform.parent.GetComponent<SpriteRenderer>().flipX == true ){
 			
-			transform.localPosition = new Vector2(  -hitBoxOffsetByX   , -0.3f);
+			transform.localPosition = new Vector2(  -hitBoxOffsetByX   , -0.67f);
 		//hit right
 		} else if((transform.parent.GetComponent<SpriteRenderer>().flipX == false )){
-			transform.localPosition = new Vector2( +hitBoxOffsetByX , -0.3f);
+			transform.localPosition = new Vector2( +hitBoxOffsetByX , -0.67f);
 		}
 
 	}
