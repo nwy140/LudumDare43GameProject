@@ -13,6 +13,8 @@ public class EnemyPatrol : MonoBehaviour {
 
 	public float damage = 20f; 
 	public GameObject HitBox;
+	public GameObject Shuriken;
+	public bool meeleeAtk = true, rangeAtk = false;
 	private Animator anim;
 	private SpriteRenderer sr;
 
@@ -112,10 +114,27 @@ public class EnemyPatrol : MonoBehaviour {
 
 	}
 	void Combat(){
-		if(anim){
+		if(anim && meeleeAtk){
 			anim.SetInteger(TagManager.Atk_BOOL_ANIMPARAM,Random.Range(1,3));
-			print(name + " tries to attack player ");
-		}
+			print(name + " tries to melee attack player ");
+		} 
+
+		if(anim&&rangeAtk){
+			SoundManager.instance.PlayShurikenSound();
+			
+
+			anim.Play (TagManager.SKILL_ANIMATION);
+
+			GameObject thrown = (GameObject)Instantiate (
+			Shuriken,
+			transform.position,
+			transform.rotation);
+
+			thrown.GetComponent<Projectile>().instigator = gameObject;			
+			thrown.GetComponent<Projectile>().goLeft = goLeft;
+			print(name + " tries to melee attack player ");
+
+		}		
 		
 	}
 }

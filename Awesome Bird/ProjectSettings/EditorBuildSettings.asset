@@ -12,18 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro_2.unity
     guid: 2c58156e71d595a43a0487d36bd46716
   - enabled: 1
-    path: Assets/MainProjectFiles/Scenes/Mode_Survival.unity
-    guid: 9111e19fa186800419cb4c8ec418b153
-  - enabled: 1
-    path: Assets/MainProjectFiles/Scenes/Level_00.unity
+    path: Assets/MainProjectFiles/Scenes/Level_01.unity
     guid: 98886cbd0b1e42b4bbfbe590105c4b7b
+  - enabled: 1
+    path: Assets/MainProjectFiles/Scenes/Level_02.unity
+    guid: 9644eb01f5d3d964c9c3e9e4a872ce36
   - enabled: 1
     path: Assets/MainProjectFiles/Scenes/Level_01_Old2.unity
     guid: 411cc574074f5da479e5be934935d66a
-  - enabled: 0
-    path: Assets/AwesomeBird/Scenes/Gameplay.unity
-    guid: 522cbb32c402e4cae9267f02914be353
-  - enabled: 0
-    path: Assets/MainProjectFiles/Scenes/Menu_Main.unity
-    guid: d7c53722a289bae4788e24b6fe4bae2a
   m_configObjects: {}

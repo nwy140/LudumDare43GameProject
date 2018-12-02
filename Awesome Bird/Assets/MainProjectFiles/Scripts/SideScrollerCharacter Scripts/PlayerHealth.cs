@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour {
 		if(!isShielded ){
 			health-=amount;
 			health_img.fillAmount = health/100f;
-
+			SoundManager.instance.PlayHurtSound();
 			print("Player Took Damage, health is " + health);
 			if (gameObject.activeInHierarchy && health>0) {
 				StartCoroutine (TurnOffOnSign());

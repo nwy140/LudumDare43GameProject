@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 114167766323462020}
   - component: {fileID: 114277483118795606}
   m_Layer: 0
-  m_Name: Enemy02
+  m_Name: Enemy03
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -957,7 +957,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069339729512170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 97.56, y: 1.76, z: 0}
+  m_LocalPosition: {x: -6.077834, y: -0.28829443, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 4621121655508042}
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   HitBox: {fileID: 1805465173853740}
   Shuriken: {fileID: 1310341772252484, guid: 3d9e5803c61096744add4167a5987b00, type: 2}
   meeleeAtk: 1
-  rangeAtk: 0
+  rangeAtk: 1
 --- !u!114 &114817357441642350
 MonoBehaviour:
   m_ObjectHideFlags: 1

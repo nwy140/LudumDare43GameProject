@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour {
 	public float death_spawnChance = 30;
 
 	public Sprite death_Sprite;
-
+	
 	private SpriteRenderer sr;
 
 	void Awake() {
@@ -34,8 +34,9 @@ public class EnemyHealth : MonoBehaviour {
 			} 
 				
 			if(sr){
-				sr.sprite = death_Sprite;
+				sr.sprite = death_Sprite;	
 			}
+			
 			Destroy(gameObject , 0.3f);
 		}  
 

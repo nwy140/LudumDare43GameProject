@@ -5,6 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
   //Drag in the Bullet Emitter from the Component Inspector.
 
+        [HideInInspector]
+        public GameObject instigator  ;
         Rigidbody2D myBody;
         [HideInInspector]
         public bool goLeft;
@@ -29,11 +31,15 @@ public class Projectile : MonoBehaviour {
         }
 
         void OnTriggerEnter2D(Collider2D other) {
-
-            if(other.gameObject.tag == TagManager.ENEMY_TAG){
+            if(other.gameObject.tag == TagManager.ENEMY_TAG && instigator.tag == TagManager.PLAYER_TAG ){
                 SoundManager.instance.hitSoundManager.Play();
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-                Destroy(gameObject);
+            }
+        
+            // protect null ptr // attack player as enemy
+            if(other.gameObject.tag == TagManager.PLAYER_TAG && instigator.tag == TagManager.ENEMY_TAG ){
+                SoundManager.instance.hitSoundManager.Play();
+                other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             }
         }
 

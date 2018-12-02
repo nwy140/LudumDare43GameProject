@@ -106,6 +106,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 			Shuriken,
 			transform.position,
 			transform.rotation);
+			thrown.GetComponent<Projectile>().instigator = gameObject;
 			
 			thrown.GetComponent<Projectile>().goLeft = goLeft;
 
