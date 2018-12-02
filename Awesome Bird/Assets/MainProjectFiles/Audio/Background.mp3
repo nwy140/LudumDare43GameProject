@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body>
+
+
+
+
+
+
+
+
+
+
+
+<div>
+<div>
+
+        <div>
+
+
+
+        <div>
+           <h1>ERROR 504 - GATEWAY TIMEOUT</h1>
+<hr>
+           <div>
+					 <div>
+					 	<div>
+						 <h3>Why am I seeing this page?</h3>
+							<div>
+									<p>The server that your request has reached is acting as a gateway or proxy to fulfil the request made by your client.
+									</p><p><strong>Web Browser</strong><em> =&gt; </em><strong>Web Front-End</strong><em> =&gt; </em><strong>Web Back-End</strong></p>
+									<p>This server <em>(Web Front-End)</em> received an invalid response from an upstream <em>(Web Back-End)</em> server it accessed to fulfil the request.</p>
+									<p>In most cases this will not mean that the upstream server is down, but rather that the upstream server and the gateway/proxy do not agree on the protocol for exchanging data.</p>
+									<p>This problem is most commonly caused when there is a problem with IP communications between the Web Front and Back-Ends. Before you attempt to resolve this problem you should clear your browser cache completely.</p>
+									<p>Our support staff will be happy to assist you in resolving this issue. Please contact our Live Support or reply to any Tickets you may have received from our technicians for further assistance.</p>
+							</div>
+						</div>
+						</div>
+			</div>
+
+
+
+
+
+
+
+
+        </div>
+
+        <div style="clear:left"></div>
+        </div>
+
+</div>
+
+
+
+
+
+
+
+</div>
+</body></html>
