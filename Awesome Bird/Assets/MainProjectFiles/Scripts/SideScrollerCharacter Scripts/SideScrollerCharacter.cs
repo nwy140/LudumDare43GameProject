@@ -43,7 +43,7 @@ public class SideScrollerCharacter : MonoBehaviour {
 			AnimControl();
 			Move ();
 			Combat();
-			if (Input.GetKeyDown(KeyCode.Space)) {
+			if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetAxis(TagManager.VERTICAL_AXIS) > 0) {
 				JumpFunc ();
 			}
 
@@ -52,13 +52,13 @@ public class SideScrollerCharacter : MonoBehaviour {
 	}
 
 	void Move() {
-		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || SimpleInput.GetAxis(TagManager.HORIZONTAL_AXIS) < 0){
 			myBody.velocity =  new Vector2 (Mathf.Clamp(-move_Speed,-max_moveSpeed,+max_moveSpeed), myBody.velocity.y);
 			goLeft = true;
 			sr.flipX = goLeft;
 			
 		} 
-		else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
+		else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || SimpleInput.GetAxis(TagManager.HORIZONTAL_AXIS) > 0){
 			myBody.velocity =  new Vector2 (Mathf.Clamp(+move_Speed,-max_moveSpeed,+max_moveSpeed), myBody.velocity.y);			
 			goLeft = false;
 			sr.flipX = goLeft;
@@ -99,13 +99,13 @@ public class SideScrollerCharacter : MonoBehaviour {
 	}
 
 	void Combat(){
-		if(Input.GetMouseButtonDown(0)){
+		if(Input.GetMouseButtonDown(2) || SimpleInput.GetButtonDown(TagManager.JUMP_BUTTON)){
 			SoundManager.instance.PlayAtkSound();
 			anim.Play(TagManager.Atk_ANIMATION);
 			
 		}
 
-		if(Input.GetMouseButtonDown(1)){
+		if(Input.GetMouseButtonDown(2) || SimpleInput.GetButtonDown(TagManager.JUMP2_BUTTON)) {
 			SoundManager.instance.PlayShurikenSound();
 			
 

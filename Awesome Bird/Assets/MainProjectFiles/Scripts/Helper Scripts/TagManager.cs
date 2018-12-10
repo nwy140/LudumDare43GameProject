@@ -29,6 +29,14 @@ public class TagManager : MonoBehaviour {
 	public static string WALK_BOOL_ANIMPARAM= "Walking";
 	public static string Atk_BOOL_ANIMPARAM = "Atk";
 
+	public static string HORIZONTAL_AXIS = "Horizontal";
+
+	public static string VERTICAL_AXIS = "Vertical";
+
+	public static string JUMP_BUTTON = "Jump";	
+
+	public static string JUMP2_BUTTON = "Jump2";
+
 	public static string GAME_DATA = "/GameData.dat";
 
 	public static string HP_ICON_HIERACHY = "HP_Icon";
